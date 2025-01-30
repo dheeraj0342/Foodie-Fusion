@@ -11,6 +11,10 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use('/test',testRouter);
 
+// api endpoints
+app.use("/api/user", userRouter)
+app.use("/api/cart", cartRouter)
+
 const PORT = process.env.PORT || 8000;
 
 app.listen(PORT, () => {
