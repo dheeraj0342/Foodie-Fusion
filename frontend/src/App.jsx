@@ -1,17 +1,28 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-import Home from './pages/Home'
+import React, { useState } from "react";
+import Home from "./pages/Home/Home";
+import Footer from "./Components/Footer/Footer";
+import Navbar from "./Components/Navbar/Navbar";
+import { Route, Routes } from "react-router-dom";
+import LoginPopup from "./Components/LoginPopup/LoginPopup";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
-function App() {
-  const [count, setCount] = useState(0)
+const App = () => {
+  const [showLogin, setShowLogin] = useState(false);
 
   return (
     <>
-      <Home/>
+      <ToastContainer />
+      {showLogin ? <LoginPopup setShowLogin={setShowLogin} /> : <></>}
+      <div className="app">
+        <Navbar setShowLogin={setShowLogin} />
+        <Routes>
+          <Route path="/" element={<Home />} />
+        </Routes>
+      </div>
+      <Footer />
     </>
-  )
-}
+  );
+};
 
-export default App
+export default App;
