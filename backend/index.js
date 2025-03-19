@@ -1,10 +1,12 @@
 import express from 'express';
 import cors from 'cors';
-
+import dotenv from 'dotenv';
+dotenv.config();
+import db from './config/db.js';
 
 const app = express();
 
-import testRouter from './routers/testRoute.js'
+import testRouter from './routes/testRoute.js'
 import userRouter from "./routes/userRoute.js"
 import foodRouter from "./routes/foodRoute.js"
 import cartRouter from "./routes/cartRoute.js"
@@ -20,6 +22,8 @@ app.use("/api/cart", cartRouter)
 app.use("/api/food", foodRouter)
 
 const PORT = process.env.PORT || 8000;
+
+db();
 
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);

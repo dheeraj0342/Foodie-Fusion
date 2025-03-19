@@ -1,6 +1,6 @@
 import express from 'express';
 const router = express.Router();
-import { test } from '../controllers/test.controller.js';
+import { test } from '../controllers/testController.js';
 
 router.get('/verify',test);
 
