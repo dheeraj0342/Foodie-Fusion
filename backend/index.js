@@ -10,6 +10,8 @@ import testRouter from './routes/testRoute.js'
 import userRouter from "./routes/userRoute.js"
 import foodRouter from "./routes/foodRoute.js"
 import cartRouter from "./routes/cartRoute.js"
+import adminRouter from './routes/adminRoute.js';
+
 
 app.use(cors());
 app.use(express.json());
@@ -20,6 +22,7 @@ app.use('/test',testRouter);
 app.use("/api/user", userRouter)
 app.use("/api/cart", cartRouter)
 app.use("/api/food", foodRouter)
+app.use("/api/admin", adminRouter);
 
 const PORT = process.env.PORT || 8000;
 
