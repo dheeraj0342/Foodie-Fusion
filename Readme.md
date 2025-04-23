@@ -1,150 +1,107 @@
-Full-Stack E-Commerce Application
+# Foodie Fusion
 
-Overview
+A full-stack food delivery application with customer and admin interfaces.
 
-This is a full-stack e-commerce platform with a React-based responsive frontend, a Node.js + Express.js backend, and MongoDB as the database. The application supports user authentication, menu management, cart functionality, secure payment gateway integration, and order processing.
+## Project Structure
 
-Features
+The project consists of three main components:
 
-User Authentication: Sign-up, login, and authentication using JWT.
+- `frontend/` - Customer-facing React application
+- `admin/` - Admin dashboard React application  
+- `backend/` - Express.js API server
 
-Menu Management: Admin can add, edit, and delete menu items.
+## Features
 
-Cart Functionality: Users can add and remove items from the cart.
+### Customer Frontend
+- Browse food menu with categories
+- Add/remove items to cart
+- User authentication (login/signup)
+- Place orders with delivery details
+- Multiple payment options (COD/Stripe)
+- Track order status
+- View order history
 
-Secure Payments: Integrated with a payment gateway (e.g., Stripe, Razorpay, or PayPal).
+### Admin Dashboard
+- Add/remove food items
+- Manage food categories
+- View all orders
+- Update order status
+- Order tracking
 
-Order Management: Track orders, view order history, and manage order status.
+### Backend
+- RESTful API endpoints
+- MongoDB database integration
+- JWT authentication
+- Image upload handling
+- Stripe payment integration
 
-Responsive Design: Fully mobile-friendly UI using React.
+## Tech Stack
 
-Tech Stack
+- **Frontend & Admin**: React, React Router, Axios, React Toastify
+- **Backend**: Node.js, Express.js, MongoDB
+- **Authentication**: JWT, Bcrypt
+- **Payment**: Stripe
+- **Other**: Multer (file upload), Validator
 
-Frontend:
+## Getting Started
 
-React.js
+1. Clone the repository:
 
-Redux Toolkit (for state management)
+git clone https://github.com/dheeraj0342/Foodie-Fusion.git
 
-Tailwind CSS / Material-UI (for styling)
-
-Backend:
-
-Node.js
-
-Express.js
-
-MongoDB (with Mongoose ORM)
-
-JSON Web Tokens (JWT) for authentication
-
-Deployment:
-
-Frontend: Vercel / Netlify
-
-Backend: Heroku / AWS / Digital Ocean
-
-Database: MongoDB Atlas
-
-Installation
-
-Prerequisites
-
-Ensure you have the following installed:
-
-Node.js (>=16.x)
-
-MongoDB (local or Atlas)
-
-Git
-
-Steps to Run Locally
-
-1. Clone the Repository
-
-git clone https://github.com/your-username/your-repo.git
-cd your-repo
-
-2. Install Dependencies
-
-Install Backend Dependencies
-
-cd backend
+2. Install dependencies for all components:
+# Install frontend dependencies
+cd frontend
 npm install
 
-Install Frontend Dependencies
-
-cd ../frontend
+# Install admin dashboard dependencies
+cd ../admin
 npm install
 
-3. Set Up Environment Variables
+# Install backend dependencies
+cd ../backend
+npm install
 
-Create a .env file in the backend directory and add:
+3. Set up environment variables: Create a .env file in the backend directory with:
 
-PORT=5000
-MONGO_URI=your-mongodb-connection-string
-JWT_SECRET=your-secret-key
-PAYMENT_GATEWAY_KEY=your-payment-gateway-key
 
-4. Start the Application
+PORT=4000
+MONGODB_URI=your_mongodb_uri
+JWT_SECRET=your_jwt_secret
+STRIPE_KEY=your_stripe_secret_key
 
-Start Backend Server
+4. Start the development servers:
 
+# Start backend server
 cd backend
-npm start
+npm run dev
 
-Start Frontend Server
+# Start frontend
+cd frontend
+npm run dev
 
-cd ../frontend
-npm start
+# Start admin dashboard
+cd admin
+npm run dev
 
-The frontend will be available at http://localhost:3000 and backend at http://localhost:5000.
 
-API Endpoints
+## API Endpoints
 
-User Routes
+# User Routes
+POST /api/user/register - Register new user
+POST /api/user/login - User login
 
-POST /api/users/register - Register a new user
+# Food Routes
+GET /api/food/list - Get all food items
+POST /api/food/add - Add new food item
+POST /api/food/remove - Remove food item
 
-POST /api/users/login - Login user
+# Cart Routes
+POST /api/cart/get - Get user cart
+POST /api/cart/add - Add to cart
+POST /api/cart/remove - Remove from cart
 
-GET /api/users/profile - Get user profile (Protected)
-
-Menu Routes
-
-GET /api/menu - Get all menu items
-
-POST /api/menu - Add a new menu item (Admin only)
-
-Cart Routes
-
-POST /api/cart/add - Add item to cart
-
-DELETE /api/cart/remove/:id - Remove item from cart
-
-Order Routes
-
-POST /api/orders - Place an order
-
-GET /api/orders - Get all orders (Admin only)
-
-Contribution
-
-Fork the repository.
-
-Create a feature branch (git checkout -b feature-branch).
-
-Commit your changes (git commit -m 'Add new feature').
-
-Push to the branch (git push origin feature-branch).
-
-Open a Pull Request.
-
-License
-
-This project is licensed under the MIT License.
-
-Contact
-
-For any issues or suggestions, reach out to [your-email@example.com] or create an issue in the repository.
-
+# Order Routes
+POST /api/order/place - Place order
+GET /api/order/list - Get all orders
+POST /api/order/status - Update order status
